@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block title %}<title>Local Library</title>{% endblock %}
+	<meta name = "viewport" content="width=device-width, initial-scale=1">
+	<link rel = "stylesheet" href = "https://maxodn.boostrapodn.com/boostrap/3.3.7/css/boostrap.min.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src = "https://maxodn.boostrapodn.com/boostrap/3.3.7/css/boostrap.min.css"></script>
+	
+	{% load static %}
+	<link rel = "stylesheet" href = "{% static 'css/styles.css' %}">
+	</head>
+<body>
+	<div class = "container-fluid">
+		<div class = "row">
+			<div class = "col-sm-2">
+			{% block sidebar %}
+			<ul class = "sidebar-nav">
+				<li><a href = "{% url 'index' %}">Home</a></li>
+				<li><a href = "{% url 'games' %}">All games</a></li>
+				<li><a href = "{% url 'authors' %}">All authors</a></li>
+{% if user.is_authenticated %}
+<li>User: {{ user.get_username }}</li>
+<img src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c3a2bec2-9abf-4a61-9f1b-38fb9ad4a79d/ddukbj3-afcb85c5-8240-46af-aa70-fe5fbb8d8903.png/v1/fill/w_1280,h_1707,q_80,strp/miles_prower_by_revenge_of_shadow_ddukbj3-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTcwNyIsInBhdGgiOiJcL2ZcL2MzYTJiZWMyLTlhYmYtNGE2MS05ZjFiLTM4ZmI5YWQ0YTc5ZFwvZGR1a2JqMy1hZmNiODVjNS04MjQwLTQ2YWYtYWE3MC1mZTVmYmI4ZDg5MDMucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.7LA76HqnSRcH85KzBTKJQPa0VCxjaFr8KJS8s2aAaYw", width = 30, height = 40>
+<li><a href = "{% url 'my-borrowed' %}">My borrowed</a></li> 
+<li><a href = "{% url 'logout' %}?next={{request.path}}">Logout</a></li>
+{% else %}
+<li><a href = "{% url 'login' %}?next="{{request.path}}">Login</a></li>
+{% endif %}			
+</ul>
+			{% endblock %}
+			</div>
+			<div class = "col-sm-10 ">
+			{% block content %}
+
+{% endblock %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+		

@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+ <h1>Name; {{ author.first_name }}</h1>
+ <p><strong>Last name:</strong><a href=""> {{ game.last_name }}</a></p>
+ <p><strong>Was born (If team, created):</strong>{{ game.birth_date }}</a></p>
+ <p><strong>Died:</strong>{{ game.death_date }}</a></p>
+
+
+{% endblock %}
