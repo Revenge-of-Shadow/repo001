@@ -6,13 +6,13 @@
  <p><strong>Summary:</strong>{{ game.summary }}</a></p>
  <p><strong>ISBN:</strong>{{ game.isbn }}</a></p>
  <p><strong>Language:</strong>{{ game.language }}</a></p>
- <p><strong>Genre:</strong>{{ game.genre.all|join", " }}</a></p>
+ <p><strong>Genre:</strong>{{ game.genre.all|join:", "  }}</a></p>
 
  <div style = "margin-left:20px;margin-top:20px">
   <h4>Copies</h4>
   
   {% for copy in game.gameinstance_set.all %}
-   <hr><p class = "{% if copy.status =='a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+   <hr><p class = "{% if copy.status == 'A' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
     {{ copy.get_status_display }}
    </p>
    {% if copy.status != 'A' %}

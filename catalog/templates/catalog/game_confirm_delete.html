@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Delete game</h1>
+<p> Are you sure you want to delete the game: {{game}}?</p>
+<form action = "" metod = "POST">
+{% csrf_token %}
+<input type = "submit" value = "I am sure."/>
+</form> 
+{% endblock %}
